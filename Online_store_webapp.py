@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request
 import psycopg2
 
+app = Flask('Online Videogame Store')
+
 conn = psycopg2.connect(
     host="localhost",
     database="Store_databse",
