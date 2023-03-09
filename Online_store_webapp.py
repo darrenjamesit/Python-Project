@@ -8,3 +8,9 @@ conn = psycopg2.connect(
     password="hAv3eleFant77@%$"
 )
 
+@app.route('/')
+@app.route('/home/')
+def home_page():
+    """Renders the home page"""
+
+    return render_template('home.html')
