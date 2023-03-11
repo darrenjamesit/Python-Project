@@ -19,6 +19,21 @@ def home_page():
     return render_template('home.html')
 
 
+@app.route('/product/<prod_id>')
+def product():
+    """Renders a page for the chosen product"""
+
+    return render_template('product.html')
+
+
+@app.route('/search/', methods=['GET', 'POST'])
+def search():
+    print(request.form)
+    print(dict(request.form))
+    print(request.form.get(''))
+    return render_template('search.html', search=request.form, )
+
+
 if __name__ == '__main__':
     app.run(debug=True)
     
