@@ -34,6 +34,16 @@ def search():
     return render_template('search.html', search=request.form, )
 
 
+@app.route('/contact/')
+def contact():
+    return render_template('contact.html')
+
+
+@app.route('/all_products/')
+def all_prod():
+    return render_template('all_products.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
     
