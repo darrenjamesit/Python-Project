@@ -4,24 +4,29 @@
 	left: 0;
 	right: 0;
 	height: 50px;
-	background-color: #f2f2f2;
+	background-color: white;
 	padding: 10px;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 }
 
-.left_button {
-	float: left;
+.leftbutton {
+	display: flex;
+	align-items: center;
 }
 
-.right_button {
-	float: right;
+.rightbutton {
+	display: flex;
+	align-items: center;
 }
 
-button {
-	background-color: #4CAF50;
-	color: white;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 5px;
-	margin: 0 5px;
-	cursor: pointer;
+.navbar img {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.navbar a {
+    text-decoration: none;
 }
