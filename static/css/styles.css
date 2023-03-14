@@ -29,4 +29,10 @@
 
 .navbar a {
     text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    color: DarkOrchid;
+    font-weight: bolder;
 }
