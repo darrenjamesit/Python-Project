@@ -15,20 +15,22 @@
 
 <div class="navbar">
   <div class="leftbutton">
-    <button class="btn">
-      <a href="/home/">
-        <img src="/static/images/gamer-icon-dark.png" alt="home">
-        The Video Game Store
-      </a>
-    </button>
-  </div>
-  <div class="rightbutton">
+    <div class="pad">
+      <button class="btn">
+        <a href="/home/">
+          <img src="/static/images/gamer-icon-dark.png" alt="home">
+          The Video Game Store
+        </a>
+      </button>
+    </div>
     <div class="pad">
       <form action="">
         <img src="/static/images/portal.png" alt="search">
-        <input type="text" placeholder="   search...">
+        <input type="text" placeholder=" search me ...">
       </form>
     </div>
+  </div>
+  <div class="rightbutton">
     <div class="pad">
       <button class="btn">
         <a href="/contact/">
@@ -59,6 +61,25 @@
 <div class="content">
   {% block content %} {% endblock %}
 </div>
+
+<footer>
+  <div class="footer">
+    <div class="left">
+      <a href="/easteregg/" style="">
+        All your base are belong to us.
+      </a>
+    </div>
+    <div class="middle">
+      <div>
+        <img src="/static/images/knight.png" alt="knight" id="knight" align="center">
+        Powered by Darren James Smart
+      </div>
+    </div>
+    <div class="right">
+      &copy; 2023 James Studios
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>

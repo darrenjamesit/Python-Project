@@ -49,6 +49,11 @@ def basket():
     return render_template('basket.html')
 
 
+@app.route('/easteregg/')
+def easteregg():
+    return render_template('egg.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
     
