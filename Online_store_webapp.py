@@ -44,6 +44,11 @@ def all_prod():
     return render_template('all_products.html')
 
 
+@app.route('/basket/')
+def basket():
+    return render_template('basket.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
     
