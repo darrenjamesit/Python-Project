@@ -25,6 +25,10 @@
 	align-items: center;
 }
 
+.pad {
+padding: 5px;
+}
+
 .navbar img {
     margin-right: 5px;
     vertical-align: middle;
