@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import psycopg2
+from image_converter import filefinder, img_to_bytea, bytea_to_img
 from io import BytesIO
 from PIL import Image as imgg
 import base64
@@ -12,6 +13,8 @@ conn = psycopg2.connect(
     user="postgres",
     password="hAv3eleFant77@%$"
 )
+
+source = 'C:/Users/Darren James/Documents/Coding/Python-Project/database/images'
 
 
 @app.route('/')
