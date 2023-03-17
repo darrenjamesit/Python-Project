@@ -2,6 +2,7 @@ from PIL import Image as imGg
 import psycopg2
 import io
 import os
+import base64
 
 
 def filefinder(rootdir: str) -> list:
@@ -73,9 +74,28 @@ def img_to_bytea(conn, path_list: list):
                 conn.commit()
 
 
-def bytea_to_img():
-    # convert incoming bytea data from database to displayable base64-encoded image for use in html
-    pass
+def bytea_to_img(conn, image_id: tuple):
+    # retrieves and converts incoming bytea data from database to displayable base64-encoded image for use in html
+
+    query = """
+            select
+                img_binarydata
+            from 
+                images
+            where
+                id=%s
+    """
+
+    # first connects to the database and retrieves the image based on the id
+    c = conn.cursor()
+    c.execute(query, image_id)
+    image_data = c.fetchone()[0]
+
+    # the retrieved binary data is converted to a base64 and stored in a local variable
+    # called "base64_data" which can then be used in html
+    base64_data = base64.b64encode(image_data).decode('utf-8')
+
+    return base64_data
 
 
 if __name__ == '__main__':
@@ -90,3 +110,4 @@ if __name__ == '__main__':
     )
     p = filefinder(source)
     img_to_bytea(db, p)
+
