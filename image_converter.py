@@ -25,7 +25,7 @@ def img_to_bytea(conn, path_list: list):
     """
     query2 = """
                 insert into images 
-                (name, data) 
+                (name, img_binarydata) 
                 values (%s, %s)
     """
 
@@ -74,7 +74,7 @@ def img_to_bytea(conn, path_list: list):
 
 
 def bytea_to_img():
-    # convert incoming image from database to be displayed in html
+    # convert incoming bytea data from database to displayable base64-encoded image for use in html
     pass
 
 
