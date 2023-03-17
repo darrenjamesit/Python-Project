@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request
 import psycopg2
 from image_converter import filefinder, img_to_bytea, bytea_to_img
-from io import BytesIO
-from PIL import Image as imgg
-import base64
+
 
 app = Flask('Online Videogame Store')
 
