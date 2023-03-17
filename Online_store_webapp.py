@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import psycopg2
+
 from image_converter import filefinder, img_to_bytea, bytea_to_img
 
 
@@ -14,6 +15,9 @@ conn = psycopg2.connect(
 
 source = 'C:/Users/Darren James/Documents/Coding/Python-Project/database/images'
 
+path_list = filefinder(source)
+
+img_to_bytea(conn, path_list)
 
 @app.route('/')
 @app.route('/home/')
@@ -45,6 +49,7 @@ def contact():
 
 @app.route('/all_products/')
 def all_prod():
+
     return render_template('all_products.html')
 
 
