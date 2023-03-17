@@ -19,6 +19,7 @@ path_list = filefinder(source)
 
 img_to_bytea(conn, path_list)
 
+
 @app.route('/')
 @app.route('/home/')
 def home_page():
@@ -49,8 +50,8 @@ def contact():
 
 @app.route('/all_products/')
 def all_prod():
-
-    return render_template('all_products.html')
+    image = bytea_to_img(conn, (38,))
+    return render_template('all_products.html', image=image)
 
 
 @app.route('/basket/')
