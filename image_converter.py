@@ -38,6 +38,7 @@ def img_to_bytea_converter(conn, path_list: list):
             image_bytes = io.BytesIO()
 
             # save() saves image data as stream object in format specified below
+            # format needs to be specified for each individual extension
             if '.webp' in path:
                 image.save(image_bytes, format='WebP')
             elif '.png' in path:
@@ -52,7 +53,7 @@ def img_to_bytea_converter(conn, path_list: list):
             # seek() moves the stream pointer to start of stream
             image_bytes.seek(0)
 
-            # read() reads binary data from stream
+            # read() reads binary data from stream and stores in psycopg2.binary object
             bytea_data = psycopg2.Binary(image_bytes.read())
             couple = (filename, bytea_data)
             c.execute(query, couple)
