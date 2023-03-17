@@ -16,52 +16,66 @@ def filefinder(rootdir: str) -> list:
     return path_list
 
 
-def img_to_bytea_converter(conn, path_list: list):
+def img_to_bytea(conn, path_list: list):
     # convert images to bytea file for use in database
 
     c = conn.cursor()
-    query = """
+    query1 = """
+                select name from images
+    """
+    query2 = """
                 insert into images 
                 (name, data) 
                 values (%s, %s)
     """
-    with conn:
-        for path in path_list:
-            # opens the image file using open() method from
-            # Image (imgg) from Pillow (PIL)"""
-            image = imGg.open(path)
 
-            # get filename from path
+    with conn:
+        # creates a tuple of all values in 'name' column
+        c.execute(query1)
+        column = c.fetchall()
+
+        # extracts all values in column tuple for ease of access
+        names = [row[0] for row in column]
+
+        for path in path_list:
+            # gets filename from path
             filename = os.path.splitext(os.path.basename(path))[0]
 
-            # convert image to bytes
-            image_bytes = io.BytesIO()
+            # if statement necessary to prevent duplicates in database
+            if filename not in names:
 
-            # save() saves image data as stream object in format specified below
-            # format needs to be specified for each individual extension
-            if '.webp' in path:
-                image.save(image_bytes, format='WebP')
-            elif '.png' in path:
-                image.save(image_bytes, format='PNG')
-            elif '.jpg' in path or '.jpeg' in path or '.jfif' in path:
-                # save() method specified as format 'JPEG' for JPEG encoded images
-                # regardless of file extension
-                image.save(image_bytes, format='JPEG')
-            else:
-                continue
+                # opens the image file using open() method from Pillow (PIL)"""
+                image = imGg.open(path)
 
-            # seek() moves the stream pointer to start of stream
-            image_bytes.seek(0)
+                # converts image to bytes
+                image_bytes = io.BytesIO()
 
-            # read() reads binary data from stream and stores in psycopg2.binary object
-            bytea_data = psycopg2.Binary(image_bytes.read())
-            couple = (filename, bytea_data)
-            c.execute(query, couple)
-            conn.commit()
+                # save() saves image data as stream object in format specified below
+                # - image format needs to be specified for each individual extension
+                if '.webp' in path:
+                    image.save(image_bytes, format='WebP')
+                elif '.png' in path:
+                    image.save(image_bytes, format='PNG')
+                elif '.jpg' in path or '.jpeg' in path or '.jfif' in path:
+                    # save() method specified as format 'JPEG' for JPEG encoded images
+                    # regardless of file extension
+                    image.save(image_bytes, format='JPEG')
+                else:
+                    continue
+
+                # seek() moves the stream pointer to start of stream
+                image_bytes.seek(0)
+
+                # read() reads binary data from stream and stores in psycopg2.binary object
+                bytea_data = psycopg2.Binary(image_bytes.read())
+                couple = (filename, bytea_data)
+                c.execute(query2, couple)
+                conn.commit()
 
 
-# def bytea_to_img_converter():
-#     convert incoming image from database to be displayed in html
+def bytea_to_img():
+    # convert incoming image from database to be displayed in html
+    pass
 
 
 if __name__ == '__main__':
