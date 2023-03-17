@@ -89,4 +89,4 @@ if __name__ == '__main__':
         password="hAv3eleFant77@%$"
     )
     p = filefinder(source)
-    img_to_bytea_converter(db, p)
+    img_to_bytea(db, p)
