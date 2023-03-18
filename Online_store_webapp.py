@@ -50,8 +50,12 @@ def contact():
 
 @app.route('/all_products/')
 def all_prod():
-    image = bytea_to_img(conn, (38,))
-    return render_template('all_products.html', image=image)
+    image1 = bytea_to_img(conn, (1,))
+    image2 = bytea_to_img(conn, (7,))
+    image3 = bytea_to_img(conn, (25,))
+    image4 = bytea_to_img(conn, (36,))
+
+    return render_template('all_products.html', image1=image1, image2=image2, image3=image3, image4=image4)
 
 
 @app.route('/basket/')
