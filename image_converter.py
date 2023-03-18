@@ -110,4 +110,3 @@ if __name__ == '__main__':
     )
     p = filefinder(source)
     img_to_bytea(db, p)
-
