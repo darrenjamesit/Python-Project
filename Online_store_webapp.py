@@ -30,6 +30,8 @@ def home_page():
 
 @app.route('/product/<prod_id>')
 def product(image_id, conn):
+
+    "Adapt this "
     # """Renders a page for the chosen product"""
     # query = """
     #         select
@@ -68,6 +70,11 @@ def all_prod():
     image2 = bytea_to_img(conn, (7,))
     image3 = bytea_to_img(conn, (25,))
     image4 = bytea_to_img(conn, (36,))
+
+    # not to self use fetchall() then create a list of dictionaries here to display all products
+    # eg [{id: image_id, name: image_name, price: prod_price, description: description,
+    # img_binarydata: bytea (?or convert bytea before then store in dictionary?) }]
+    # then render the list of dictionaries rather than each individual image...
 
     return render_template('all_products.html', image1=image1, image2=image2, image3=image3, image4=image4)
 
