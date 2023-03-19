@@ -29,9 +29,23 @@ def home_page():
 
 
 @app.route('/product/<prod_id>')
-def product():
-    """Renders a page for the chosen product"""
-
+def product(image_id, conn):
+    # """Renders a page for the chosen product"""
+    # query = """
+    #         select
+    #             data
+    #         from
+    #             images
+    #         where
+    #             id = %s
+    # """
+    # c = conn.cursor()
+    # c.execute(query, (image_id,))
+    # image = bytea_to_img(conn, tuple(c.fetchone()))
+    # c.close()
+    #
+    # if image is None:
+    #     return 'Image not found', 404
     return render_template('product.html')
 
 
