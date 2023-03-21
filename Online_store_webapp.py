@@ -29,9 +29,9 @@ def home_page():
 
 
 @app.route('/product/<prod_id>')
-def product(image_id, conn):
+def product(prod_id):
 
-    "Adapt this "
+    """Adapt this """
     # """Renders a page for the chosen product"""
     # query = """
     #         select
