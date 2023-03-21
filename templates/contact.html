@@ -1,4 +1,24 @@
 {% extends "layouts/layout.html" %}
 {% block content %}
+<div>
+    <h2 class="homeh2">
+        We would love to hear from you.
+    </h2>
+</div>
+<br>
+<div style="display: flex; justify-content: center;">
+    <form name="contactform" style="max-width:750px; min-width:500px;" action="/contact/" method="get">
+        <input type="text" name="name" placeholder="name" required style="width:100%;">
+        <br><br>
+        <input type="email" name="email" placeholder="email" required style="width:100%;">
+        <br><br>
+        <textarea name="comment" placeholder="comment" rows="10" required style="width:100%;"></textarea>
+        <br><br>
+        <div class="rgb" style="width:100%;">
+            <button type="submit" style="width:100%;">Submit</button>
+        </div>
+    </form>
+</div>
+
 
 {% endblock content %}
