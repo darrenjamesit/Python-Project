@@ -41,3 +41,11 @@ insert into products (name, price, stock, category_id)
     ('3.5mm Aux Splitter 0,5m', '17.99', '32', '4'),
     ('USB-A to Type-C Cable (Fast Charge) 3m', '59.99', '88', '4'),
     ('VGA-to-VGA Cable 1,5m', '14.99', '7', '4');
+
+insert into products (name, price, stock, category_id)
+    values
+    ('PlayStation 4 500GB', '1999.99', '21', '1'),
+    ('PlayStation 5 1TB', '2499.99', '13', '1'),
+    ('XBox Series X 500GB', '2299.99', '18', '1'),
+    ('Nintendo Switch', '1499.99', '25', '1'),
+    ('Steam Deck 100GB', '1999.99', '7', '1');
