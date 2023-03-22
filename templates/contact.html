@@ -6,19 +6,53 @@
     </h2>
 </div>
 <br>
-<div style="display: flex; justify-content: center;">
-    <form name="contactform" style="max-width:750px; min-width:500px;" action="/contact/" method="get">
-        <input type="text" name="name" placeholder="name" required style="width:100%;">
+<div class="centred">
+    <form name="contactform" style="max-width:1000px; min-width:500px;" action="/contact/" method="get">
+        <input type="text" name="name" placeholder="name" required class="contact">
         <br><br>
-        <input type="email" name="email" placeholder="email" required style="width:100%;">
+        <input type="email" name="email" placeholder="email" required class="contact">
         <br><br>
-        <textarea name="comment" placeholder="comment" rows="10" required style="width:100%;"></textarea>
+        <textarea name="comment" placeholder="comment" rows="10" required class="contact"></textarea>
         <br><br>
         <div class="rgb" style="width:100%;">
             <button type="submit" style="width:100%;">Submit</button>
         </div>
     </form>
 </div>
+<br><br>
+<div>
+    <h2 class="homeh2">
+        About Us.
+    </h2>
+</div>
+<br>
+<div class="centred">
+    <table>
+        <tr>
+            <td>
+                <img src="/static/images/controller.jpg" alt="controller" style="width:500px">
+            </td>
+            <td style="font-family: Trebuchet MS; width: 500px; text-align: right; line-height: 1.5">
+                <p>
+                    We have been your go to online merchant of the finest videogame products since 2022!
+                    We have been there for every fetch quest, every boss battle and every Victory Royale!
+                    This is a family run business and we aim to continue bringing you the highest quality
+                    items you need. This is a National Gaming Authority registered business &copy;.
+                </p>
+                <h2 class="homeh2">Thank you!</h2>
+                <hr>
 
-
+                Str. Gamingului nr. 1
+                <br>
+                Cluj-Napoca, Cluj
+                <br>
+                420420
+                <br>
+                Romania
+                <br>
+                + (40) 777 420 420
+            </td>
+        </tr>
+    </table>
+</div>
 {% endblock content %}
