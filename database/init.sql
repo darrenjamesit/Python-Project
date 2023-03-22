@@ -15,7 +15,7 @@ insert into categories (category_name)
 create table if not exists products(
     id serial primary key,
     name text not null,
-    price real null,
+    price numeric(10,2),
     description text null,
     stock smallint null,
     category_id int,
