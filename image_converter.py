@@ -74,25 +74,10 @@ def img_to_bytea(conn, path_list: list):
                 conn.commit()
 
 
-def bytea_to_img(conn, image_id: tuple):
-    # retrieves and converts incoming bytea data from database to displayable base64-encoded image for use in html
+def bytea_to_img(image_data):
+    """Converts image bytea data to html-displayable image"""
 
-    query = """
-            select
-                img_binarydata
-            from 
-                images
-            where
-                id=%s
-    """
-
-    # first connects to the database and retrieves the image based on the id
-    c = conn.cursor()
-    c.execute(query, image_id)
-    image_data = c.fetchone()[0]
-
-    # the retrieved binary data is converted to a base64 and stored in a local variable
-    # called "base64_data" which can then be used in html
+    # uses b64encode module to convert raw binary bytea data into base64 data
     base64_data = base64.b64encode(image_data).decode('utf-8')
 
     return base64_data
