@@ -82,3 +82,24 @@ insert into products (name, price, stock, category_id, description)
     'The beloved Animal Crossing franchise is preparing for its debut on Nintendo Switch! If the hustle and bustle of modern life has gotten you down, Tom Nook has a new adventure up his sleeve that he knows youll love: the Nook Inc. Island Escape Package! Sure, youve crossed paths with colorful characters. But deep down, isnt there a part of you that yearns for freedom? Then maybe a long walk on the beach of a deserted island is just what the doctor recommended. Quiet creativity and charm await as you roll up your sleeves and transform your own life into what you want. Gather resources and craft everything from creature comforts to useful tools.'),
     ('Super Mario Odyssey - Nintendo Switch', '234.99', '19', '2',
     'Super Mario Odyssey is the first sandbox game that will allow Mario to explore his own world since Super Mario 64 on the Nintendo 64 and Super Mario Sunshine on the Nintendo GameCube. Mario leaves the Mushroom Kingdom and embarks on a journey with new experiences and mysterious places, such as navigating between worlds via an airship and being able to throw Marios cap.');
+
+insert into products (name, price, stock, category_id, description)
+    values
+    ('Marvel Thor Mjolnir Replica 28cm', '203.99', '7', '3',
+    'The magic hammer MJOLNIR of the Asgardian God of Thunder THOR brought to life in this beautiful replica statue. 28cm.'),
+    ('Minecraft Lamp Steve', '189.99', '12', '3',
+    'Your beloved protagonist Steve in all his blocky magnificence as a Minecraft lamp to keep away all those Creepers and Zombies that stalk in the dark!'),
+    ('Super Mario Bros. Super Mushroom Lamp', '99.99', '30', '3',
+    'Level Up your nightlight game with this gorgeous Super Mario Bros. Lamp, perfect for kids!'),
+    ('Funko POP! Disney Mickey and Friends - Mickey Mouse no.1187', '89.99', '18', '3',
+    'Mickey Mouse Funko POP! Figurine.'),
+    ('Funko POP! Marvel Spider-Man - Spider-Man no.1160', '89.99', '11', '3',
+    'Spider-Man Funko POP! Figurine.'),
+    ('Funko POP! Television The Mandalorian - The Child no.368', '59.99', '46', '3',
+    'Baby Yoda Funko POP! Figurine.'),
+    ('Funko POP! Marvel: Spider-Man - Doctor Strange no.1162', '59.99', '3', '3',
+    'Doctor Strange Funko POP! Figurine.'),
+    ('PS5 Icons Lamp', '99.99', '16', '3',
+    'Beautiful Nightlight depicting the most famous buttons of all! The PS5 Controller Icons!'),
+    ('Mario Kart - Blue Shell Lamp', '129.99', '51', '3',
+    'When coming in second, this Blue Shell lamp is sure to give you an edge over that pesky race-leader.');
