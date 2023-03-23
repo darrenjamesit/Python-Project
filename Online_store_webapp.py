@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import psycopg2
 
-from image_converter import filefinder, img_to_bytea, bytea_to_img
+from image_converter import filefinder, img_to_bytea, bytea_to_img, dict_maker
 
 
 app = Flask('Online Videogame Store')
@@ -18,6 +18,8 @@ source = 'C:/Users/Darren James/Documents/Coding/Python-Project/database/images'
 path_list = filefinder(source)
 
 img_to_bytea(conn, path_list)
+
+prod_dict = dict_maker(conn)
 
 
 @app.route('/')
@@ -67,37 +69,16 @@ def contact():
 
 @app.route('/all_products/')
 def all_prod():
+    """Displays all items."""
 
-    query = """
-                select
-                    img_binarydata
-                from
-                    images
-                where
-                    id = %s
-        """
-    c = conn.cursor()
-    c.execute(query, '9')
-    image_data1 = c.fetchone()[0]
-
-    image1 = bytea_to_img(image_data1)
-
-    c.execute(query, ('50',))
-    image_data2 = c.fetchone()[0]
-    image2 = bytea_to_img(image_data2)
-
-    # not to self use fetchall() then create a list of dictionaries here to display all products
-    # eg [{id: image_id, name: image_name, price: prod_price, description: description,
-    # img_binarydata: bytea (?or convert bytea before then store in dictionary?) }]
-    # then render the list of dictionaries rather than each individual image...
-
-    return render_template('all_products.html', image1=image1, image2=image2)
+    return render_template('all_products.html', alldata=prod_dict)
 
 
 @app.route('/category/<category>')
 def cat():
 
     return render_template('category.html')
+
 
 @app.route('/basket/')
 def basket():
@@ -111,4 +92,3 @@ def easteregg():
 
 if __name__ == '__main__':
     app.run(debug=True)
-    
