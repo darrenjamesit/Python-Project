@@ -89,7 +89,7 @@ def dict_maker(conn):
     # first queries the database for all relevant information.
     query = """
                     select
-                        p.id, p.name, p.price, p.description, i.img_binarydata
+                        p.id, p.name, p.price, i.img_binarydata
                     from
                         products p
                     inner join
@@ -136,5 +136,5 @@ if __name__ == '__main__':
 
     prod_dict = dict_maker(conn)
 
-    with open ('dictionary.txt', 'w') as write:
+    with open('dictionary.txt', 'w') as write:
         print(prod_dict, file=write)
