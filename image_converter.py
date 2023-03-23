@@ -83,15 +83,58 @@ def bytea_to_img(image_data):
     return base64_data
 
 
+def dict_maker(conn):
+    """Creates a dictionary of all product information, including images."""
+
+    # first queries the database for all relevant information.
+    query = """
+                    select
+                        p.id, p.name, p.price, p.description, i.img_binarydata
+                    from
+                        products p
+                    inner join
+                        images i on p.id = i.prod_id
+            """
+    c = conn.cursor()
+    c.execute(query)
+
+    # creates a list of all column names
+    col_names = [desc[0] for desc in c.description]
+
+    # fetches all rows from the SQL query
+    all_data = c.fetchall()
+
+    # creates a dictionary for ease of data manipulation
+    prod_dict = {}
+
+    for row in all_data:
+        # a = bytea_to_img(row[4])
+        prod_id = row[0]
+        if prod_id not in prod_dict:
+            prod_dict[prod_id] = {}
+        for i in range(1, len(col_names)):
+            column_name = col_names[i]
+            if column_name == 'img_binarydata':
+                column_value = bytea_to_img(row[i])
+            else:
+                column_value = row[i]
+            prod_dict[prod_id][column_name] = column_value
+
+    return prod_dict
+
+
 if __name__ == '__main__':
 
-    source = 'C:/Users/Darren James/Documents/Coding/Python-Project/database/images'
+    # proof of concept and dictionary reference
 
-    db = psycopg2.connect(
+    conn = psycopg2.connect(
         host="localhost",
-        database="mydb10",
+        database="store_database",
         user="postgres",
         password="hAv3eleFant77@%$"
     )
-    p = filefinder(source)
-    img_to_bytea(db, p)
+
+    prod_dict = dict_maker(conn)
+
+    with open ('dictionary.txt', 'w') as write:
+        print(prod_dict, file=write)
