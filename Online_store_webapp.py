@@ -94,6 +94,11 @@ def all_prod():
     return render_template('all_products.html', image1=image1, image2=image2)
 
 
+@app.route('/category/<category>')
+def cat():
+
+    return render_template('category.html')
+
 @app.route('/basket/')
 def basket():
     return render_template('basket.html')
