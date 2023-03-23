@@ -8,7 +8,7 @@ app = Flask('Online Videogame Store')
 
 conn = psycopg2.connect(
     host="localhost",
-    database="Store_database",
+    database="store_database",
     user="postgres",
     password="hAv3eleFant77@%$"
 )
@@ -31,24 +31,25 @@ def home_page():
 @app.route('/product/<prod_id>')
 def product(prod_id):
 
-    """Adapt this """
-    # """Renders a page for the chosen product"""
-    # query = """
-    #         select
-    #             data
-    #         from
-    #             images
-    #         where
-    #             id = %s
-    # """
-    # c = conn.cursor()
-    # c.execute(query, (image_id,))
-    # image = bytea_to_img(conn, tuple(c.fetchone()))
-    # c.close()
-    #
-    # if image is None:
-    #     return 'Image not found', 404
-    return render_template('product.html')
+    """Renders a page for the chosen product"""
+#
+# # first queries database
+# query = """
+#         select
+#             img_binarydata
+#         from
+#             images
+#         where
+#             id = %s
+# """
+# c = conn.cursor()
+# c.execute(query, (image_id,))
+# image = bytea_to_img(conn, tuple(c.fetchone()))
+# c.close()
+#
+# if image is None:
+#     return 'Image not found', 404
+# return render_template('product.html')
 
 
 @app.route('/search/', methods=['GET', 'POST'])
@@ -66,17 +67,31 @@ def contact():
 
 @app.route('/all_products/')
 def all_prod():
-    image1 = bytea_to_img(conn, (1,))
-    image2 = bytea_to_img(conn, (7,))
-    image3 = bytea_to_img(conn, (25,))
-    image4 = bytea_to_img(conn, (36,))
+
+    query = """
+                select
+                    img_binarydata
+                from
+                    images
+                where
+                    id = %s
+        """
+    c = conn.cursor()
+    c.execute(query, '9')
+    image_data1 = c.fetchone()[0]
+
+    image1 = bytea_to_img(image_data1)
+
+    c.execute(query, ('50',))
+    image_data2 = c.fetchone()[0]
+    image2 = bytea_to_img(image_data2)
 
     # not to self use fetchall() then create a list of dictionaries here to display all products
     # eg [{id: image_id, name: image_name, price: prod_price, description: description,
     # img_binarydata: bytea (?or convert bytea before then store in dictionary?) }]
     # then render the list of dictionaries rather than each individual image...
 
-    return render_template('all_products.html', image1=image1, image2=image2, image3=image3, image4=image4)
+    return render_template('all_products.html', image1=image1, image2=image2)
 
 
 @app.route('/basket/')
