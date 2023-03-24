@@ -135,8 +135,16 @@
     align-items: center;
     text-align: center;
     box-sizing: border-box;
-
 }
+
+.imagediv:hover {
+    border-color: rgba(0, 0, 0, 0.15);
+    box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+    color: rgba(0, 0, 0, 0.65);
+    transform: translateY(-2px);
+}
+
+
 
 .imagediv img {
     max-width: 90%;
@@ -147,15 +155,6 @@
 
 }
 
-.paragraph {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-.paragraph:hover {
-  white-space: normal;
-}
 
 .grid {
     display: grid;
