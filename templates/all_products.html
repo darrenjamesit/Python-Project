@@ -5,9 +5,20 @@
         The best deals for your  Gaming Lifestyle! We've got you covered!
     </h2>
     <br>
-    <div class="imagediv">
-        <img src="data:image/png;base64,{{ alldata[24]['img_binarydata'] }}" alt="">
+    <div>
+        <div class="grid">
+            {% for id, sub_dict in alldata.items() %}
+            <div class="imagediv">
+
+                <a href="/product/{{ id }}">
+                    <img src="data:image/png;base64,{{ sub_dict['img_binarydata'] }}" alt="{{ sub_dict['name'] }}">
+                </a>
+                <p class="homeh2">{{ sub_dict['name'] }} <br> <b>{{ sub_dict['price'] }} RON</b></p>
+</div>
+            {% endfor %}
+        </div>
     </div>
+
 </div>
 <!--<div>-->
 <!--    <table>-->
