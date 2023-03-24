@@ -1,4 +1,9 @@
 {% extends "layouts/layout.html" %}
+
+{% block head %}
+  <script src="{{ url_for('static', filename='image.js') }}"></script>
+{% endblock %}
+
 {% block content %}
 <div>
     <h1 class="homeh1" style="font-size:300%;">{{  row[1]  }}</h1>
