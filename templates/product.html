@@ -1,4 +1,26 @@
 {% extends "layouts/layout.html" %}
 {% block content %}
+<div style="">
+    <h1 class="homeh1" style="font-size:300%;">{{  dictionary['name']  }}</h1>
+</div>
+<br>
+<div>
+    <div class="homeh2" style="font-weight:bold; display:flex; justify-content: center;">
+        {{  dictionary['category_name']  }}
+    </div>
+    <div class="rgb" style="width:500px; ; display: inline-block; float: left;">
+        <img src="data:image/png;base64,{{ dictionary['img_binarydata'] }}" alt="{{  dictionary['name']  }}"  style="width:100%; border-radius:30px;">
+    </div>
+    <div class="homeh2" style="font-weight:bold; font-size: 250%; display:flex; justify-content: center; text-decoration:underline;">
+        {{  dictionary['price']  }} RON
+    </div>
+</div>
+<br>
+<h2 class="homeh2">
+    Description:
+</h2>
+<div class="homeh2" style="font-size:150%; display:flex; justify-content: center; width:100%;">
+    {{  dictionary['description']  }}
+</div>
 
 {% endblock content %}

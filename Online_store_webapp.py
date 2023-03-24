@@ -32,26 +32,42 @@ def home_page():
 
 @app.route('/product/<prod_id>')
 def product(prod_id):
-
     """Renders a page for the chosen product"""
-#
-# # first queries database
-# query = """
-#         select
-#             img_binarydata
-#         from
-#             images
-#         where
-#             id = %s
-# """
-# c = conn.cursor()
-# c.execute(query, (image_id,))
-# image = bytea_to_img(conn, tuple(c.fetchone()))
-# c.close()
-#
-# if image is None:
-#     return 'Image not found', 404
-# return render_template('product.html')
+
+    # then queries the database for all relevant information.
+    with conn:
+        query = """
+                        select
+                            p.name, p.price, p.description, c.category_name, i.img_binarydata
+                        from
+                            categories c
+                        join
+                            products p on c.id = p.category_id
+                        join
+                            images i on p.id = i.prod_id
+                        where
+                            p.id = %s::integer;
+                        """
+        c = conn.cursor()
+        c.execute(query, (prod_id,))
+
+        # creates a list of all column names
+        col_names = [desc[0] for desc in c.description]
+
+        # fetches row from the SQL query
+        row = c.fetchone()
+
+        dictionary = {}
+
+        for i in range(len(col_names)):
+            column_name = col_names[i]
+            if column_name == 'img_binarydata':
+                column_value = bytea_to_img(row[i])
+            else:
+                column_value = row[i]
+            dictionary[column_name] = column_value
+
+        return render_template('product.html', title=dictionary['name'], prod_id=prod_id, dictionary=dictionary)
 
 
 @app.route('/search/', methods=['GET', 'POST'])
