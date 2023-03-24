@@ -1,18 +1,21 @@
 {% extends "layouts/layout.html" %}
 {% block content %}
-<div style="">
-    <h1 class="homeh1" style="font-size:300%;">{{  dictionary['name']  }}</h1>
+<div>
+    <h1 class="homeh1" style="font-size:300%;">{{  row[1]  }}</h1>
 </div>
 <br>
 <div>
     <div class="homeh2" style="font-weight:bold; display:flex; justify-content: center;">
-        {{  dictionary['category_name']  }}
+        Category : {{  row[5] | capitalize  }}
     </div>
-    <div class="rgb" style="width:500px; ; display: inline-block; float: left;">
-        <img src="data:image/png;base64,{{ dictionary['img_binarydata'] }}" alt="{{  dictionary['name']  }}"  style="width:100%; border-radius:30px;">
+    <div class="rgb" style="margin-left: 2%; width:500px; ; display: inline-block; float: left;">
+        <img src="data:image/png;base64,{{ img[0] }}" alt="image" id="newimage" style="width:100%; border-radius:10px;">
     </div>
     <div class="homeh2" style="font-weight:bold; font-size: 250%; display:flex; justify-content: center; text-decoration:underline;">
-        {{  dictionary['price']  }} RON
+        {{  row[2]  }} RON
+    </div>
+    <div style="font-weight:bold; font-size: 75%; display:flex; justify-content: center; color:red;">
+        Stock: {{  row[4]  }}
     </div>
 </div>
 <br>
@@ -20,7 +23,7 @@
     Description:
 </h2>
 <div class="homeh2" style="font-size:150%; display:flex; justify-content: center; width:100%;">
-    {{  dictionary['description']  }}
+    {{  row[3]  }}
 </div>
 
 {% endblock content %}

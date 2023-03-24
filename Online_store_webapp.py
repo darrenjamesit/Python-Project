@@ -38,36 +38,31 @@ def product(prod_id):
     with conn:
         query = """
                         select
-                            p.name, p.price, p.description, c.category_name, i.img_binarydata
+                            p.id, p.name, p.price, p.description, p.stock, c.category_name, i.img_binarydata, p.category_id
                         from
                             categories c
                         join
                             products p on c.id = p.category_id
-                        join
+                        left join
                             images i on p.id = i.prod_id
                         where
-                            p.id = %s::integer;
+                            p.id = %s::integer
+                        group by
+                            p.id, p.name, p.price, c.category_name, i.img_binarydata;
                         """
         c = conn.cursor()
         c.execute(query, (prod_id,))
 
-        # creates a list of all column names
-        col_names = [desc[0] for desc in c.description]
-
         # fetches row from the SQL query
-        row = c.fetchone()
+        rows = c.fetchall()
 
-        dictionary = {}
+        row = rows[0]
 
-        for i in range(len(col_names)):
-            column_name = col_names[i]
-            if column_name == 'img_binarydata':
-                column_value = bytea_to_img(row[i])
-            else:
-                column_value = row[i]
-            dictionary[column_name] = column_value
+        image_list = []
+        for element in rows:
+            image_list.append(bytea_to_img(element[6]))
 
-        return render_template('product.html', title=dictionary['name'], prod_id=prod_id, dictionary=dictionary)
+        return render_template('product.html', row=row, img=image_list, title=row[1])
 
 
 @app.route('/search/', methods=['GET', 'POST'])
