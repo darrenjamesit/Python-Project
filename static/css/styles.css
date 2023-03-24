@@ -125,14 +125,43 @@
 
 .imagediv {
     width:200px;
-    height:200px;
+    padding: 20px;
+    height:300px;
+    border: solid 1px #ECECEC;
     border-radius:5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+
 }
 
 .imagediv img {
-    width:100%;
-    height:100%;
-    border-radius: 5px;"
+    max-width: 90%;
+    max-height: 90%;
+    border-radius: 5px;
+    object-fit: contain;
+    object-position: center;
+
+}
+
+.paragraph {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.paragraph:hover {
+  white-space: normal;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 300px;
+    grid-gap: 20px;
 }
 
 .contact {
@@ -140,6 +169,7 @@
     border-radius:5px;
     border: solid 1px lightgrey;
     font-family: Trebuchet MS;
+    display: flex;
 }
 
 .centred {
