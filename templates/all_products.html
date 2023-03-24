@@ -9,7 +9,6 @@
         <div class="grid">
             {% for id, sub_dict in alldata.items() %}
             <div class="imagediv">
-
                 <a href="/product/{{ id }}">
                     <img src="data:image/png;base64,{{ sub_dict['img_binarydata'] }}" alt="{{ sub_dict['name'] }}">
                 </a>
