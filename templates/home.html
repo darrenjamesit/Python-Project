@@ -1,16 +1,25 @@
 {% extends "layouts/layout.html" %}
 {% block content %}
-<div>
-    <h1 class="homeh1">
-        Welcome to the <br> Home of Gaming!
-    </h1>
-    <h2 class="homeh2">
-        All your gaming needs found right here!
-    </h2>
-</div>
-<div class="logo">
+
+<style>
+    body {
+      background-image: url("/static/images/pixel-bg.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+
     <div>
-        <img src="/static/images/store_logo.jpg" alt="home">
+        <h1 class="homeh1">
+            Welcome to the <br> Home of Gaming!
+        </h1>
+        <h2 class="homeh2">
+            All your gaming needs found right here!
+        </h2>
     </div>
-</div>
+    <div class="logo">
+        <div>
+            <img src="/static/images/logo.png" alt="home">
+        </div>
+    </div>
 {% endblock content %}
