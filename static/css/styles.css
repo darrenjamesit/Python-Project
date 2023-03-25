@@ -136,6 +136,19 @@
     color: white;
 }
 
+.button {
+    width:100%;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+}
+
+.homeh1white {
+    text-align: center;
+    font-family: Trebuchet MS;
+    font-size: 500%;
+    background-color: rgba(255,255,255, 0.7);
+}
+
 .imagediv {
     width:200px;
     padding: 20px;
