@@ -1,9 +1,18 @@
 {% extends "layouts/layout.html" %}
 {% block content %}
-<div>
-    <h2 class="homeh2">
-        We would love to hear from you.
-    </h2>
+
+<style>
+    body {
+      background-image: url("/static/images/coin.png");
+      background-repeat: repeat;
+      background-opacity: 0.5;
+    }
+  </style>
+
+<div class="centred">
+    <h1 class="homeh1" style="background-color: rgba(255,255,255, 0.7);">
+        We'd' love to hear from you.
+    </h1>
 </div>
 <br>
 <div class="centred">
@@ -21,9 +30,9 @@
 </div>
 <br><br>
 <div>
-    <h2 class="homeh2">
+    <h1 class="homeh1" style="background-color: rgba(255,255,255, 0.7);">
         About Us.
-    </h2>
+    </h1>
 </div>
 <br>
 <div class="centred">
@@ -32,7 +41,7 @@
             <td>
                 <img src="/static/images/controller.jpg" alt="controller" style="width:500px">
             </td>
-            <td style="font-family: Trebuchet MS; width: 500px; text-align: right; line-height: 1.5">
+            <td class="cntact">
                 <p>
                     We have been your go to online merchant of the finest videogame products since 2022!
                     We have been there for every fetch quest, every boss battle and every Victory Royale!
