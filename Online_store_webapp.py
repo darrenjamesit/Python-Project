@@ -75,14 +75,14 @@ def search():
 
 @app.route('/contact/')
 def contact():
-    return render_template('contact.html')
+    return render_template('contact.html', title='Contact')
 
 
 @app.route('/all_products/')
 def all_prod():
     """Displays all items."""
 
-    return render_template('all_products.html', alldata=prod_dict)
+    return render_template('all_products.html', alldata=prod_dict, title='All Products')
 
 
 @app.route('/category/<category>')
@@ -123,7 +123,7 @@ def cat(category):
             return "No products found for category '{}'".format(category)
 
     # render the template with the row and image list
-    return render_template('category.html', rows=rows)
+    return render_template('category.html', rows=rows, title=rows[0][3].capitalize())
 
 
 @app.route('/basket/')
