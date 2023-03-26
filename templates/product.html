@@ -1,7 +1,19 @@
 {% extends "layouts/layout.html" %}
 {% block content %}
+
+<style>
+    body {
+      background-image: url("/static/images/clouds.jpeg");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+
 <div>
     <h1 class="homeh1" style="font-size:300%;">{{  row[1]  }}</h1>
+</div>
+<div class="homeh2" id="price">
+    {{  row[2]  }} RON
 </div>
 <br>
 <div>
@@ -9,36 +21,39 @@
         Category : <a href="/categories/{{row[5]}}">{{  row[5] | capitalize  }}</a>
     </div>
     <br>
-    <div id="image-container">
-        {% if img|length > 0 %}
-        <img src="data:image/png;base64,{{ img[0] }}" id="img1" alt="image">
-        {% endif %}
-        {% if img|length > 1 %}
-        <img src="data:image/png;base64,{{ img[1] }}" id="img2" alt="image">
-        {% endif %}
-        {% if img|length > 2 %}
-        <img src="data:image/png;base64,{{ img[2] }}" id="img3" alt="image">
-        {% endif %}
-        <button id="toggle-button" class="btn" onclick="toggleImages()">Toggle Images</button>
+    <div id="stock">
+        Stock: {{  row[4]  }}
     </div>
-    {% block scripts %}
-    <script type="text/javascript" src="/static/scripts/image.js"></script>
-    {% endblock scripts %}
-</div>
+    <br>
 
-<div class="homeh2" id="price">
-    {{  row[2]  }} RON
+    <table>
+        <tr>
+            <td style="height:500px;">
+                <div id="image-container">
+                    {% if img|length > 0 %}
+                    <img src="data:image/png;base64,{{ img[0] }}" id="img1" alt="image">
+                    {% endif %}
+                    {% if img|length > 1 %}
+                    <img src="data:image/png;base64,{{ img[1] }}" id="img2" alt="image">
+                    {% endif %}
+                    {% if img|length > 2 %}
+                    <img src="data:image/png;base64,{{ img[2] }}" id="img3" alt="image">
+                    {% endif %}
+                    <button id="toggle-button" class="btn" onclick="toggleImages()">Toggle Images</button>
+                </div>
+                {% block scripts %}
+                <script type="text/javascript" src="/static/scripts/image.js"></script>
+                {% endblock scripts %}
+            </td>
+            <td style="height:500px;">
+                <h2 class="homeh2white">
+                    Description:
+                </h2>
+                <div class="homeh2" id="description">
+                    {{  row[3]  }}
+                </div>
+            </td>
+        </tr>
+    </table>
 </div>
-<div id="stock">
-    Stock: {{  row[4]  }}
-</div>
-
-<br>
-<h2 class="homeh2">
-    Description:
-</h2>
-<div class="homeh2" id="description">
-    {{  row[3]  }}
-</div>
-
 {% endblock content %}

@@ -145,31 +145,43 @@
 
 #stock {
     font-weight:bold;
-    font-size: 75%;
+    font-size: 100%;
     display:flex;
-    justify-content: center;
+    justify-content: left;
     color:red;
+    font-family: trebuchet ms;
+    text-decoration:underline;
 }
 
 #price {
     font-weight:bold;
     font-size: 250%;
+    width: 500px;
     display:flex;
     justify-content: center;
     text-decoration:underline;
+    background-color: rgba(255,255,255, 0.7);
 }
 
 #description {
     font-size:150%;
-    display:flex;
-    justify-content: center;
-    width:100%;
+        vertical-align: middle;
+    max-width:100%;
+    background-color: rgba(255,255,255, 0.7);
 }
 
 .homeh1white {
     text-align: center;
     font-family: Trebuchet MS;
     font-size: 500%;
+    background-color: rgba(255,255,255, 0.7);
+}
+
+.homeh2white {
+    text-align: center;
+    vertical-align: middle;
+    font-family: Trebuchet MS;
+    max-width: 200px;
     background-color: rgba(255,255,255, 0.7);
 }
 
@@ -204,6 +216,7 @@
 }
 
 #image-container {
+    display: block;
     width: 500px;
     height: 500px;
     position: relative;
