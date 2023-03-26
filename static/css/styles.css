@@ -165,7 +165,7 @@
 
 #description {
     font-size:150%;
-        vertical-align: middle;
+    vertical-align: middle;
     max-width:100%;
     background-color: rgba(255,255,255, 0.7);
 }
@@ -256,7 +256,7 @@ justify-content: center;
 /* RGB animated container: */
 .rgb {
     position: relative;
-    z-index: -1;
+    z-index: 0;
     border-radius: 10px;
     touch-action: manipulation;
 }
