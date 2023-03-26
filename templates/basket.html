@@ -1,4 +1,14 @@
 {% extends "layouts/layout.html" %}
 {% block content %}
-
+<style>
+    body {
+      background-image: url("/static/images/coin.png");
+      background-repeat: repeat;
+      background-size: 10%;
+    }
+  </style>
+<h1 class="homeh1white">Your Basket:</h1>
+<div class="grid">
+  <img src="data:image/png;base64,{{ rows[4] }}" alt="image">
+</div>
 {% endblock content %}
