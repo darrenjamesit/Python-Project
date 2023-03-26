@@ -9,4 +9,4 @@ const favicon = document.getElementById('favicon');
 // The following logic changes the favicon if isDarkMode returns True
 if (isDarkMode) {
   favicon.href = '/static/images/gamer-icon-dark.png';
-}
+};
