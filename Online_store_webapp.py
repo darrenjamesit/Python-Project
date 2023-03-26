@@ -67,10 +67,45 @@ def product(prod_id):
 
 @app.route('/search/', methods=['GET', 'POST'])
 def search():
-    print(request.form)
-    print(dict(request.form))
-    print(request.form.get(''))
-    return render_template('search.html', search=request.form, )
+    """Search all products based on search product name or category"""
+
+    if request.method == 'POST':
+        srch = request.form
+    else:
+        srch = request.args
+
+    search = srch.get('search')
+
+    with conn:
+        query = """
+            select distinct on (p.id)
+                p.id, p.name, p.price, c.category_name, i.img_binarydata
+            from
+                categories c
+            join
+                products p on c.id = p.category_id
+            left join
+                images i on p.id = i.prod_id
+            where
+                lower(p.name) like lower(%s) or lower(c.category_name) like lower(%s);
+        """
+
+        c = conn.cursor()
+        c.execute(query, (f'%{search}%', f'%{search}%'))
+
+        # fetch the results
+        rows = c.fetchall()
+
+        # convert the bytea data (4th element in each tuple in list) to base64
+        for i, tup in enumerate(rows):
+            conv_img = bytea_to_img(tup[4])
+            rows[i] = (tup[0], tup[1], tup[2], tup[3], conv_img)
+
+        # if no rows were returned, return a message
+        if not rows:
+            return f"404 No products found for {search}."
+
+        return render_template('search.html', search=search, title='Search Results', rows=rows)
 
 
 @app.route('/contact/')
@@ -120,7 +155,7 @@ def cat(category):
 
         # if no rows were returned, return a message
         if not rows:
-            return "No products found for category '{}'".format(category)
+            return f"No products found for category {category}"
 
     # render the template with the row and image list
     return render_template('category.html', rows=rows, title=rows[0][3].capitalize())
