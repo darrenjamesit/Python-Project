@@ -86,9 +86,44 @@ def all_prod():
 
 
 @app.route('/category/<category>')
-def cat():
+def cat(category):
+    """Renders a page for the chosen category"""
 
-    return render_template('category.html')
+    # queries the database for all relevant information
+    with conn:
+        query = """
+            select distinct on (p.id)
+                p.id, p.name, p.price, c.category_name, i.img_binarydata
+            from
+                categories c
+            join
+                products p on c.id = p.category_id
+            left join
+                images i on p.id = i.prod_id
+            where
+                category_name = %s
+            order by
+                p.id, i.id;
+        """
+
+        # execute the query with the category parameter
+        c = conn.cursor()
+        c.execute(query, (category,))
+
+        # fetch the results
+        rows = c.fetchall()
+
+        # convert the bytea data (4th element in each tuple in list) to base64
+        for i, tup in enumerate(rows):
+            conv_img = bytea_to_img(tup[4])
+            rows[i] = (tup[0], tup[1], tup[2], tup[3], conv_img)
+
+        # if no rows were returned, return a message
+        if not rows:
+            return "No products found for category '{}'".format(category)
+
+    # render the template with the row and image list
+    return render_template('category.html', rows=rows)
 
 
 @app.route('/basket/')
