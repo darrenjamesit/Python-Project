@@ -136,10 +136,47 @@
     color: white;
 }
 
-.button {
+#toggle-button {
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 30%;
+    border: none;
+    border-radius: 5px;
+    display: inline-flex;
+    padding: 8px 16px;
+    vertical-align: middle;
+    color: black;
+    font-weight: bolder;
+    background-color: white;
+    text-align: center;
+    cursor: pointer;
+    font-family: sans-serif;
+    letter-spacing: 1.5px;
+    transition-duration: 0.1s;
+}
+
+#stock {
+    font-weight:bold;
+    font-size: 75%;
+    display:flex;
+    justify-content: center;
+    color:red;
+}
+
+#price {
+    font-weight:bold;
+    font-size: 250%;
+    display:flex;
+    justify-content: center;
+    text-decoration:underline;
+}
+
+#description {
+    font-size:150%;
+    display:flex;
+    justify-content: center;
     width:100%;
-    font-family: Trebuchet MS;
-    font-weight: bold;
 }
 
 .homeh1white {
@@ -179,6 +216,22 @@
     object-position: center;
 }
 
+#image-container {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+#image-container img {
+    max-height:90%;
+    max-width:90%;
+    border-radius:10px;
+    position:absolute;
+    top:0;
+    left:0;
+    border: solid 1px lightgrey
+}
 
 .grid {
     display: grid;
