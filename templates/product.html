@@ -1,33 +1,43 @@
 {% extends "layouts/layout.html" %}
-
-{% block head %}
-  <script src="{{ url_for('static', filename='image.js') }}"></script>
-{% endblock %}
-
 {% block content %}
 <div>
     <h1 class="homeh1" style="font-size:300%;">{{  row[1]  }}</h1>
 </div>
 <br>
 <div>
-    <div class="homeh2" style="font-weight:bold; display:flex; justify-content: center;">
-        Category : {{  row[5] | capitalize  }}
+    <div class="homeh2" style="font-weight:bold; display:flex; justify-content: left;">
+        Category : <a href="/categories/{{row[5]}}">{{  row[5] | capitalize  }}</a>
     </div>
-    <div class="rgb" style="margin-left: 2%; width:500px; ; display: inline-block; float: left;">
-        <img src="data:image/png;base64,{{ img[0] }}" alt="image" id="newimage" style="width:100%; border-radius:10px;">
+    <br>
+    <div id="image-container">
+        {% if img|length > 0 %}
+        <img src="data:image/png;base64,{{ img[0] }}" id="img1" alt="image">
+        {% endif %}
+        {% if img|length > 1 %}
+        <img src="data:image/png;base64,{{ img[1] }}" id="img2" alt="image">
+        {% endif %}
+        {% if img|length > 2 %}
+        <img src="data:image/png;base64,{{ img[2] }}" id="img3" alt="image">
+        {% endif %}
+        <button id="toggle-button" class="btn" onclick="toggleImages()">Toggle Images</button>
     </div>
-    <div class="homeh2" style="font-weight:bold; font-size: 250%; display:flex; justify-content: center; text-decoration:underline;">
-        {{  row[2]  }} RON
-    </div>
-    <div style="font-weight:bold; font-size: 75%; display:flex; justify-content: center; color:red;">
-        Stock: {{  row[4]  }}
-    </div>
+    {% block scripts %}
+    <script type="text/javascript" src="/static/scripts/image.js"></script>
+    {% endblock scripts %}
 </div>
+
+<div class="homeh2" id="price">
+    {{  row[2]  }} RON
+</div>
+<div id="stock">
+    Stock: {{  row[4]  }}
+</div>
+
 <br>
 <h2 class="homeh2">
     Description:
 </h2>
-<div class="homeh2" style="font-size:150%; display:flex; justify-content: center; width:100%;">
+<div class="homeh2" id="description">
     {{  row[3]  }}
 </div>
 
