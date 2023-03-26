@@ -141,19 +141,6 @@
     bottom: 0;
     left: 25%;
     width: 30%;
-    border: none;
-    border-radius: 5px;
-    display: inline-flex;
-    padding: 8px 16px;
-    vertical-align: middle;
-    color: black;
-    font-weight: bolder;
-    background-color: white;
-    text-align: center;
-    cursor: pointer;
-    font-family: sans-serif;
-    letter-spacing: 1.5px;
-    transition-duration: 0.1s;
 }
 
 #stock {
