@@ -21,9 +21,7 @@
         Category : <a href="/category/{{row[5]}}">{{  row[5] | capitalize  }}</a>
     </div>
     <br>
-    <div id="stock">
-        Stock: {{  row[4]  }}
-    </div>
+
     <br>
 
     <table>
@@ -31,7 +29,7 @@
             <td>
                 <div id="image-container">
                     {% if img|length > 0 %}
-                    <img src="data:image/png;base64,{{ img[0] }}" id="img1" alt="image">
+                    <img src="data:image/png;base64,{{ img[0] }}" id="img1" alt="image" style="width:100%">
                     {% endif %}
                     {% if img|length > 1 %}
                     <img src="data:image/png;base64,{{ img[1] }}" id="img2" alt="image">
@@ -41,11 +39,21 @@
                     {% endif %}
                     <button id="toggle-button" class="btn" onclick="toggleImages()">Toggle Images</button>
                 </div>
-                {% block scripts %}
-                <script type="text/javascript" src="/static/scripts/image.js"></script>
-                {% endblock scripts %}
             </td>
             <td>
+                <div>
+                    <form action="/basket/" method="get">
+                        <input type="number" value="1" min="1" max="{{  row[4]  }}" id="quantity" name="quantity" style="width:35px;" class="textinpt">
+                        <button id="basket" class="btn" type="submit">Add to Basket</button>
+                    </form>
+                </div>
+                <div id="stock">
+                    Stock: {{  row[4]  }}
+                </div>
+                {% block scripts %}
+                <script type="text/javascript" src="/static/scripts/basket.js"></script>
+                <script type="text/javascript" src="/static/scripts/image.js"></script>
+                {% endblock scripts %}
                 <h2 class="homeh2white">
                     Description:
                 </h2>
