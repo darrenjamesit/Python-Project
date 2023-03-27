@@ -74,7 +74,7 @@
 }
 
 .cntact {
-     background-color: rgba(255,255,255, 0.7);
+     background-color: rgba(255,255,255, 0.9);
      font-family:
      Trebuchet MS;
      width: 500px;
@@ -174,7 +174,7 @@
     text-align: center;
     font-family: Trebuchet MS;
     font-size: 500%;
-    background-color: rgba(255,255,255, 0.7);
+    background-color: rgba(255,255,255, 0.9);
 }
 
 .homeh2white {
@@ -182,7 +182,7 @@
     vertical-align: middle;
     font-family: Trebuchet MS;
     max-width: 200px;
-    background-color: rgba(255,255,255, 0.7);
+    background-color: rgba(255,255,255, 0.9);
 }
 
 .imagediv {
@@ -246,11 +246,21 @@
     border: solid 1px lightgrey;
     font-family: Trebuchet MS;
     display: flex;
+    line-height: 2;
+    max-width:1000px;
+    min-width:500px;
+    max-height:300px;
 }
 
 .centred {
 display: flex;
 justify-content: center;
+}
+
+.textinpt {
+    line-height: 1.5;
+    border-radius: 5px;
+    font-family: trebuchet ms;
 }
 
 /* RGB animated container: */
