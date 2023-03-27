@@ -163,7 +163,37 @@ def cat(category):
 
 @app.route('/basket/')
 def basket():
-    return render_template('basket.html')
+    """Displays the basket"""
+
+    quant = int(request.args.get('quantity', 1))
+    url = request.headers.get('Referer')
+    id = url.split('/')[-1]
+    if id:
+        with conn:
+            query = """
+                select distinct on (p.id)
+                    p.id, p.name, p.price, c.category_name, i.img_binarydata
+                from
+                    categories c
+                join
+                    products p on c.id = p.category_id
+                left join
+                    images i on p.id = i.prod_id
+                where
+                    p.id = %s;
+            """
+
+            c = conn.cursor()
+            c.execute(query, (id,))
+
+            # fetch the results
+            rows = list(c.fetchone())
+            rows[4] = bytea_to_img(rows[4])
+
+        return render_template('basket.html', quant=quant, rows=rows)
+
+    else:
+        return render_template('empty_basket.html')
 
 
 @app.route('/easteregg/')
