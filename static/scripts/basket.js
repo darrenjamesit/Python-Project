@@ -6,4 +6,5 @@ const basketButton = document.getElementById("basket");
         const currentStock = parseInt(stockDiv.innerText.split(": ")[1]);
         const newStock = currentStock - quantity;
         stockDiv.innerText = "Stock: " + newStock;
+        alert("Item added to basket!")
     });
