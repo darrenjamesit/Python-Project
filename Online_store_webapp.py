@@ -166,9 +166,8 @@ def basket():
     """Displays the basket"""
 
     quant = int(request.args.get('quantity', 1))
-    url = request.headers.get('Referer')
-    id = url.split('/')[-1]
-    if id and quant:
+    prod_id = request.args.get('prod_id')
+    if prod_id:
         with conn:
             query = """
                 select distinct on (p.id)
@@ -184,8 +183,7 @@ def basket():
             """
 
             c = conn.cursor()
-            if id:
-                c.execute(query, (id,))
+            c.execute(query, (prod_id,))
 
             # fetch the results
             rows = list(c.fetchone())
