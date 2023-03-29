@@ -44,6 +44,7 @@
                 <div>
                     <form action="/basket/" method="get">
                         <input type="number" value="1" min="1" max="{{  row[4]  }}" id="quantity" name="quantity" style="width:35px;" class="textinpt">
+                        <input type="hidden" name="prod_id" value="{{ row[0] }}">
                         <button id="basket" class="btn" type="submit">Add to Basket</button>
                     </form>
                 </div>
@@ -53,6 +54,9 @@
                 {% block scripts %}
                 <script type="text/javascript" src="/static/scripts/basket.js"></script>
                 <script type="text/javascript" src="/static/scripts/image.js"></script>
+                <script>
+                    toggleImages()
+                </script>
                 {% endblock scripts %}
                 <h2 class="homeh2white">
                     Description:
