@@ -94,6 +94,16 @@
     font-family: Trebuchet MS;
 }
 
+.label {
+    height:50px;
+    width:200px;
+    display:flex;
+    align-items: center;
+    font-family: Trebuchet MS;
+    font-weight: bold;
+    background-color: rgba(255,255,255, 0.7);
+}
+
 .footer {
     position: fixed;
     min-width: 200px;
@@ -239,11 +249,38 @@
     border: solid 1px lightgrey
 }
 
+.image-container {
+        width: 100%;
+        height: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-auto-rows: 300px;
     grid-gap: 20px;
+}
+
+#bkt {
+    background-color:rgba(255,255,255, 0.7);
+    height:350px;
+    border:solid 1px black;
+    grid-gap: 15px;
+}
+
+.innerbox {
+    align-self: center;
+    border:solid 1px black;
+    min-height: 100px;
+    background-color:rgba(255,255,255, 0.7);
+    padding:5px;
+}
+
+.innerbox img {
+    max-width:95%;
 }
 
 .contact {
