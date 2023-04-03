@@ -8,28 +8,44 @@
     }
   </style>
 <h1 class="homeh1white">Your Basket:</h1>
-<div class="grid">
-  <img src="data:image/png;base64,{{ rows[4] }}" alt="image" style="width:300px;">
+<div class="grid" id="bkt">
+  <div class="innerbox">
+    <img src="data:image/png;base64,{{ rows[4] }}" alt="image" style="width:230px;">
+  </div>
+  <div class="innerbox">
+    <h2 class="homeh2">
+      {{ rows[1] }}
+    </h2>
+  </div>
+  <div class="innerbox">
+    <h2 class="homeh2">
+      {{ rows[2] }} RON
+    </h2>
+  </div>
+  <div class="innerbox">
+    <h2 class="homeh2">
+      No. of Items: {{ quant }}
+    </h2>
+  </div>
+  <div class="innerbox">
+    <h2 class="homeh2" style="text-decoration:underline;">
+      Total: {{ quant*rows[2] }} RON
+    </h2>
+  </div>
 </div>
+<br>
 <div>
-  <h2 class="homeh2white">
-    {{ rows[1] }}
-  </h2>
-</div>
-<div>
-  <h2 class="homeh2white">
-    {{ rows[2] }}
-  </h2>
-</div>
-<div>
-  <h2 class="homeh2white">
-    Category: {{ rows[3] }}
-  </h2>
-</div>
-<div>
-  <h2 class="homeh2white">
-    No. of Items: {{ quant }}
-  </h2>
+  <a href="/basket/" style="text-decoration: none;">
+    <button class="btn">
+      Empty Basket
+    </button>
+  </a>
+  <a href="/checkout/" style="text-decoration: none;">
+    <button class="btn">
+      Go To Checkout
+    </button>
+  </a>
+
 </div>
 
 {% endblock content %}
