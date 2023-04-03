@@ -171,7 +171,7 @@ def basket():
         with conn:
             query = """
                 select distinct on (p.id)
-                    p.id, p.name, p.price, c.category_name, i.img_binarydata
+                    p.id, p.name, p.price, c.category_name, i.img_binarydata, p.stock
                 from
                     categories c
                 join
@@ -189,11 +189,20 @@ def basket():
             rows = list(c.fetchone())
             rows[4] = bytea_to_img(rows[4])
 
-        return render_template('basket.html', quant=quant, rows=rows)
+        return render_template('basket.html', quant=quant, rows=rows, title="Your Basket")
 
     else:
         return render_template('empty_basket.html')
 
+
+@app.route('/checkout/')
+def check():
+    return render_template('checkout.html', title="Confirm Payment")
+
+
+@app.route('/complete/')
+def complete():
+    return render_template('complete.html', title="Secure Payment Portal")
 
 @app.route('/easteregg/')
 def easteregg():
