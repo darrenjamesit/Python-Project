@@ -197,15 +197,21 @@ def basket():
 
 @app.route('/checkout/')
 def check():
+    """Displays the checkout screen"""
+
     return render_template('checkout.html', title="Confirm Payment")
 
 
 @app.route('/complete/')
 def complete():
+    """Displays a Successful Transaction screen"""
+
     return render_template('complete.html', title="Secure Payment Portal")
 
 @app.route('/easteregg/')
 def easteregg():
+    """This is a fun easter egg placed somewhere in the page."""
+
     return render_template('egg.html')
 
 
