@@ -208,6 +208,7 @@ def complete():
 
     return render_template('complete.html', title="Secure Payment Portal")
 
+
 @app.route('/easteregg/')
 def easteregg():
     """This is a fun easter egg placed somewhere in the page."""
