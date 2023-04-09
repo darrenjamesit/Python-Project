@@ -47,7 +47,7 @@ insert into products (name, price, stock, category_id, description)
     ('USB-A to Type-C Cable (Fast Charge) 3m', '59.99', '88', '4',
     'Durable USB / USB-C cable with nylon ribbon, Fast and safe charging - 2.4A current and pure copper wire provides faster and safer charging. Upload and transfer data at the same time - You can simultaneously upload and transfer data from your phone to your PC. Aluminum connector - High quality aluminum housing, resistant to oxidation and corrosion. Nylon ribbon - the elastic cord has been woven from a strong and durable nylon. '),
     ('VGA-to-VGA Cable 1,5m', '14.99', '7', '4',
-    'A double shielded cable with anti-interference coils. Supports HDTV resolution up to 1080.');
+    'For connecting a computer / notebook with a monitor, TV or projector to transfer data and analog video signals; Full HD resolution up to 1920 x 1080 pixels (1080p); 75 ohm impedance for optimal transmission quality; Double shielding for an efficient reduction of electromagnetic interference; Flexible materials guarantee optimal protection against bending and prevent the cable from breaking; High-quality materials and workmanship guarantee an excellent quality of data transfer.');
 
 insert into products (name, price, stock, category_id, description)
     values
