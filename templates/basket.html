@@ -24,15 +24,22 @@
   </div>
   <div class="innerbox">
     <h2 class="homeh2">
-      No. of Items: {{ quant }}
+      No. of Items: <input id="itemcount" type="number" value="{{ quant }}" min="1" max="{{ rows[5] }}" required>
     </h2>
+    <div class="stock">
+      ( Stock: {{ rows[5] }} )
+    </div>
   </div>
   <div class="innerbox">
-    <h2 class="homeh2" style="text-decoration:underline;">
-      Total: {{ quant*rows[2] }} RON
+    <h2 class="homeh2" id="total" style="text-decoration:underline;" data-price="{{ rows[2] }}">
+      Total: {{ quant * rows[2] }} RON
     </h2>
   </div>
+  {% block scripts %}
+  <script type="text/javascript" src="/static/scripts/total.js"></script>
+  {% endblock scripts %}
 </div>
+
 <br>
 <div>
   <a href="/basket/" style="text-decoration: none;">
