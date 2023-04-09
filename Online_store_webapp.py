@@ -101,7 +101,7 @@ def search():
             conv_img = bytea_to_img(tup[4])
             rows[i] = (tup[0], tup[1], tup[2], tup[3], conv_img)
 
-        # if no rows were returned, return a message
+        # if no rows were returned, return a blank search page with the search terms displayed
         if not rows:
             return render_template('search.html', search=search, title='Search Results')
 
