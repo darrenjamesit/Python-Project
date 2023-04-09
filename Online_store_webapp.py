@@ -103,7 +103,7 @@ def search():
 
         # if no rows were returned, return a message
         if not rows:
-            return f"404 No products found for {search}."
+            return render_template('search.html', search=search, title='Search Results')
 
         return render_template('search.html', search=search, title='Search Results', rows=rows)
 
