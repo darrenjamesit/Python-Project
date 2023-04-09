@@ -7,13 +7,12 @@
       background-size: 10%;
     }
   </style>
-<div class="centred">
-    <h1 class="homeh1white">
-        Please Confirm Your Payment and Delivery Details.
-    </h1>
-</div>
 
-<div class="centred" style="background-color:rgba(255,255,255, 0.7);">
+<h1 class="homeh1white">
+    Please Confirm Your Payment and Delivery Details.
+</h1>
+
+<div class="centred" style="background-color:rgba(255,255,255, 0.7); width: 600px; margin-right: auto; margin-left: auto;">
     <form name="contactform" style="max-width:1000px; min-width:500px;" action="/complete/" method="get">
         <label for="creditc" class="label">
             Card Number
@@ -39,7 +38,7 @@
         <br>
         <input type="text" name="address" placeholder="postal code" required class="contact">
         <br>
-        <select style="width:100%;">
+        <select id="select">
             <option value="Afghanistan">Afghanistan</option>
             <option value="Albania">Albania</option>
             <option value="Algeria">Algeria</option>
