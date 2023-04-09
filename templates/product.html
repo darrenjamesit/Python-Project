@@ -43,7 +43,7 @@
             <td>
                 <div>
                     <form action="/basket/" method="get">
-                        <input type="number" value="1" min="1" max="{{  row[4]  }}" id="quantity" name="quantity" style="width:35px;" class="textinpt">
+                        <input type="number" value="1" min="1" max="{{  row[4]  }}" id="quantity" name="quantity" style="width:35px;" class="textinpt" required>
                         <input type="hidden" name="prod_id" value="{{ row[0] }}">
                         <button id="basket" class="btn" type="submit">Add to Basket</button>
                     </form>
