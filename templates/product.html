@@ -17,9 +17,10 @@
     <table class="tab">
         <tr>
             <td id="left-td">
+                <br>
                 <div id="image-container">
                     {% if img|length > 0 %}
-                    <img src="data:image/png;base64,{{ img[0] }}"alt="image" class="imgg">
+                    <img src="data:image/png;base64,{{ img[0] }}" alt="image" class="imgg">
                     {% endif %}
                     {% if img|length > 1 and row[1] == 'PlayStation 4 500GB' %}
                     <img src="data:image/png;base64,{{ img[1] }}" alt="image" style="width:500px;">
@@ -29,7 +30,7 @@
                     {% if img|length > 2 %}
                     <img src="data:image/png;base64,{{ img[2] }}" alt="image">
                     {% endif %}
-                    <button id="toggle-button" class="btn" onclick="toggleImages()">Toggle Images</button>
+                    <button id="toggle-button" class="btn" onclick="toggleImages()">Toggle {{ img|length }} Image(s)</button>
                 </div>
             </td>
             <td id="right-td">
