@@ -302,6 +302,14 @@
     border: solid 1px lightgrey;
 }
 
+#itemcount {
+    height: 20px;
+    border-radius: 5px;
+    font-family: trebuchet ms;
+    font-size: 70%;
+    font-weight: bolder;
+}
+
 .centred {
 display: flex;
 justify-content: center;
