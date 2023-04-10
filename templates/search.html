@@ -16,6 +16,7 @@
     </h2>
     <br>
     <div>
+        {% if rows %}
         <div class="grid">
             {% for tuple in rows %}
             <div class="imagediv">
@@ -26,6 +27,16 @@
             </div>
             {% endfor %}
         </div>
+        {% else %}
+        <div>
+            <br>
+            <img src="/static/images/empty.gif" alt="nothingfound" style="display: block; margin: 0 auto;">
+            <br><br>
+            <h2 class="homeh2" style="color:white;">
+                Wow, such empty.
+            </h2>
+        </div>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
