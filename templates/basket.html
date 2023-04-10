@@ -35,24 +35,28 @@
       Total: {{ quant * rows[2] }} RON
     </h2>
   </div>
+  <div class="innerbox" style="border: none;">
+    <div class="rgb">
+      <a href="/basket/" style="text-decoration: none;">
+        <button class="btn" style="width: 100%;">
+          Empty Basket
+        </button>
+      </a>
+    </div>
+    <br><br>
+    <div class="rgb">
+      <a href="/checkout/" style="text-decoration: none;">
+        <button class="btn" style="width: 100%">
+          Go To Checkout
+        </button>
+      </a>
+    </div>
+  </div>
   {% block scripts %}
   <script type="text/javascript" src="/static/scripts/total.js"></script>
   {% endblock scripts %}
 </div>
 
-<br>
-<div>
-  <a href="/basket/" style="text-decoration: none;">
-    <button class="btn">
-      Empty Basket
-    </button>
-  </a>
-  <a href="/checkout/" style="text-decoration: none;">
-    <button class="btn">
-      Go To Checkout
-    </button>
-  </a>
 
-</div>
 
 {% endblock content %}
